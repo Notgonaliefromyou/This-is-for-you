@@ -1,0 +1,190 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Will You Marry Me?</title>
+  <style>
+    /* Basic Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      background: linear-gradient(to bottom, #f8bbd0, #f48fb1);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-top: 50px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin: 10px;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    .start-button {
+      font-size: 1.5em;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 50px;
+      background-color: #ff4081;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .start-button:hover {
+      transform: scale(1.1);
+    }
+
+    /* Buttons Positioned Horizontally */
+    .button-container {
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .button {
+      font-size: 1.5em;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .yes-button {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .no-button {
+      background-color: #e91e63;
+      color: white;
+    }
+
+    .yes-button:hover, .no-button:hover {
+      transform: scale(1.2);
+    }
+
+    /* Video Container */
+    #videoContainer {
+      display: none;
+      width: 100%;
+      height: 400px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Centered Content */
+    #content {
+      margin: 0;
+      padding: 40px 20px;
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Content before video -->
+  <div id="content">
+    <h1 id="marryText">Will You Marry Me? 💍</h1>
+    <p id="heartText">You make my world brighter, my heart fuller, and my life complete. ❤️</p>
+
+    <!-- Start Button -->
+    <button class="start-button" id="startButton" onclick="startExperience()">Start Experience ✨</button>
+  </div>
+
+  <!-- Buttons Container -->
+  <div id="buttonContainer" class="button-container">
+    <div>
+      <h2 id="everythingText" style="color: #ff4081;">You're My Everything 💖</h2>
+      <p id="afterVideoText">
+        Every moment with you is a blessing. ❤️ From the first time we met, I knew my life was going to change forever. 🌟 Will you join me in making this journey together as partners in love and happiness? 🥰
+      </p>
+      <div style="display: flex; justify-content: center; gap: 15px; margin-top: 20px;">
+        <button class="button yes-button" id="yesButton" onclick="yesClicked()">YES 💖</button>
+        <button class="button no-button" id="noButton" onclick="noClicked()">NO 😢</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- YouTube Video Container -->
+  <div id="videoContainer">
+    <iframe id="video" src="https://www.youtube.com/embed/IJeSR-LJBnk?start=204&end=229&autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+
+  <script>
+    // Start Experience
+    function startExperience() {
+      // Hide Start Button
+      document.getElementById('startButton').style.display = 'none';
+
+      // Show Video Container
+      document.getElementById('videoContainer').style.display = 'block';
+
+      // Play video
+      var iframe = document.getElementById('video');
+      iframe.src = "https://www.youtube.com/embed/IJeSR-LJBnk?start=204&end=229&autoplay=1";
+
+      // Hide Texts After Video Ends
+      setTimeout(() => {
+        document.getElementById('marryText').style.display = 'none';
+        document.getElementById('heartText').style.display = 'none';
+        document.getElementById('videoContainer').style.display = 'none';
+        document.getElementById('buttonContainer').style.display = 'flex'; // Show Buttons and Text
+      }, 25000); // 25 seconds delay
+    }
+
+    // Yes Button Clicked
+    function yesClicked() {
+      document.body.innerHTML = `
+        <h1>Welcome, My Wifey! 💍❤️</h1>
+        <p>
+          You said YES! You've made me the happiest person alive. 🥰  
+          From this day forward, I promise to make you laugh, support you in every step,  
+          and love you more than words can ever describe.  
+          You are not just my soulmate, but my everything.  
+          Let's write the most beautiful story together! 📝💕
+        </p>
+        <!-- Dancing Cat GIF -->
+        <img src="https://media2.giphy.com/media/gVsmn4qdyBn1Bra2tN/giphy.gif" alt="Dancing Cat" style="width: 300px; margin: 20px;">
+        <p>Here's to us, forever and always. 🥂✨</p>
+      `;
+    }
+
+    // No Button Clicked
+    function noClicked() {
+      document.body.innerHTML = `
+        <h1>Are you sure? 😢</h1>
+        <p>I can't imagine my life without you. Please reconsider. 💔</p>
+        <!-- Sad Cat GIF -->
+        <img src="https://media2.giphy.com/media/qpCvOBBmBkble/giphy.gif" alt="Sad Cat" style="width: 300px; margin: 20px;">
+        <button class="button yes-button" onclick="location.reload()">Go Back 🔙</button>
+      `;
+    }
+  </script>
+</body>
+</html>
